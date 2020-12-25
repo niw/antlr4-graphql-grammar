@@ -75,7 +75,7 @@ fragmentDefinition:
 
 fragmentName:
     // Specification is Name but not `on`
-    name_base
+    nameBase
     | TRUE
     | FALSE
     | NULL
@@ -145,7 +145,7 @@ nullValue:
 
 enumValue:
     // Specification is Name but not `true` or `false` or `null`
-    name_base
+    nameBase
     | ON;
 
 // List Value
@@ -417,14 +417,14 @@ typeSystemDirectiveLocation:
 // http://spec.graphql.org/June2018/#sec-Names
 
 name:
-    name_base
+    nameBase
     | TRUE
     | FALSE
     | NULL
     | ON
     ;
 
-name_base:
+nameBase:
     NAME
     | FRAGMENT
     | QUERY
