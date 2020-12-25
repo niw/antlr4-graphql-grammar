@@ -176,7 +176,7 @@ variableDefinitions:
     '(' variableDefinition+ ')';
 
 variableDefinition:
-    variable ':' type_ defaultValue?;
+    variable ':' typeReference defaultValue?;
 
 defaultValue:
     '=' value;
@@ -184,7 +184,7 @@ defaultValue:
 // Type References
 // https://spec.graphql.org/June2018/#sec-Type-References
 
-type_:
+typeReference:
     namedType
     | listType
     | nonNullType
@@ -194,7 +194,7 @@ namedType:
     name;
 
 listType:
-    '[' type_ ']';
+    '[' typeReference ']';
 
 nonNullType:
     namedType '!'
@@ -303,7 +303,7 @@ fieldsDefinition:
     '{'  fieldDefinition+ '}';
 
 fieldDefinition:
-    description? name argumentsDefinition? ':' type_ directives?;
+    description? name argumentsDefinition? ':' typeReference directives?;
 
 // Field Arguments
 // https://spec.graphql.org/June2018/#sec-Field-Arguments
@@ -312,7 +312,7 @@ argumentsDefinition:
     '(' inputValueDefinition+ ')';
 
 inputValueDefinition:
-    description? name ':' type_ defaultValue? directives?;
+    description? name ':' typeReference defaultValue? directives?;
 
 // Object Extensions
 // https://spec.graphql.org/June2018/#sec-Object-Extensions
