@@ -60,4 +60,5 @@ class GraphQLParserTest extends AnyFunSuite with Matchers {
   }
 
   loadParserTests("/graphql-cats/scenarios/parsing/SchemaParser.yaml")
+  loadParserTests("/graphql/SchemaParser.yaml")
 }

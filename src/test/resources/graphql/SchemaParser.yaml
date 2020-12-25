@@ -1,0 +1,26 @@
+scenario: Schema Parser
+tests:
+  - name: Keyword as field name
+    given:
+      query: |
+        type Cat {
+          schema: String
+        }
+    when:
+      parse: true
+    then:
+      passes: true
+
+  - name: Description for query
+    given:
+      query: |
+        """
+        Description
+        """
+        query {
+          meow: String
+        }
+    when:
+      parse: true
+    then:
+      syntax-error: true
