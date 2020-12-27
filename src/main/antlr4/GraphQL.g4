@@ -345,7 +345,7 @@ unionTypeDefinition:
 
 unionMemberTypes:
     '=' '|'? namedType
-    | unionMemberTypes '|'namedType
+    | unionMemberTypes '|' namedType
     ;
 
 // Union Extensions
