@@ -3,7 +3,7 @@ scalacOptions += "-deprecation"
 
 enablePlugins(Antlr4Plugin)
 
-antlr4Version in Antlr4 := "4.9"
+antlr4Version in Antlr4 := "4.9.3"
 antlr4GenListener in Antlr4 := false
 antlr4GenVisitor in Antlr4 := false
 antlr4TreatWarningsAsErrors in Antlr4 := true
