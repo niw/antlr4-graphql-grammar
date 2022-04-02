@@ -6,8 +6,7 @@ grammar GraphQL;
 // https://spec.graphql.org/June2018/#sec-Language.Document
 
 document:
-    definition+
-    ;
+    definition+;
 
 definition:
     executableDefinition
@@ -29,7 +28,10 @@ operationDefinition:
     ;
 
 operationType:
-    QUERY | MUTATION | SUBSCRIPTION;
+    QUERY
+    | MUTATION
+    | SUBSCRIPTION
+    ;
 
 // Selection Sets
 // https://spec.graphql.org/June2018/#sec-Selection-Sets
@@ -161,7 +163,8 @@ listValue:
 
 objectValue:
     '{' '}'
-    | '{' objectField+ '}';
+    | '{' objectField+ '}'
+    ;
 
 objectField:
     name ':' value;
@@ -211,7 +214,7 @@ directive:
     '@' name arguments?;
 
 // Type System
-// https://graphql.github.io/graphql-spec/June2018/#TypeSystemDefinition
+// https://spec.graphql.org/June2018/#TypeSystemDefinition
 
 typeSystemDefinition:
     schemaDefinition
@@ -228,7 +231,7 @@ typeSystemExtension:
     ;
 
 // Schema
-// https://graphql.github.io/graphql-spec/June2018/#sec-Schema
+// https://spec.graphql.org/June2018/#sec-Schema
 
 schemaDefinition:
     SCHEMA directives? '{' rootOperationTypeDefinition+ '}';
@@ -250,6 +253,7 @@ operationTypeDefinition:
 
 // Descriptions
 // https://spec.graphql.org/June2018/#sec-Descriptions
+
 description:
     stringValue;
 
@@ -262,7 +266,8 @@ typeDefinition:
     | interfaceTypeDefinition
     | unionTypeDefinition
     | enumTypeDefinition
-    | inputObjectTypeDefinition;
+    | inputObjectTypeDefinition
+    ;
 
 // Type Extensions
 // https://spec.graphql.org/June2018/#sec-Type-Extensions
@@ -289,7 +294,7 @@ scalarTypeExtension:
     EXTEND SCALAR name directives;
 
 // Objects
-// https://graphql.github.io/graphql-spec/June2018/#sec-Objects
+// https://spec.graphql.org/June2018/#sec-Schema
 
 objectTypeDefinition:
     description? TYPE name implementsInterfaces? directives? fieldsDefinition?;
@@ -338,7 +343,7 @@ interfaceTypeExtension:
     ;
 
 // Unions
-// https://graphql.github.io/graphql-spec/June2018/#sec-Unions
+// https://spec.graphql.org/June2018/#sec-Unions
 
 unionTypeDefinition:
     description? UNION name directives? unionMemberTypes?;
@@ -378,6 +383,7 @@ enumTypeExtension:
 
 // Input Objects
 // https://spec.graphql.org/June2018/#sec-Input-Objects
+
 inputObjectTypeDefinition:
     description? INPUT name directives? inputFieldsDefinition?;
 
@@ -386,6 +392,7 @@ inputFieldsDefinition:
 
 // Input Object Extensions
 // https://spec.graphql.org/June2018/#sec-Input-Object-Extensions
+
 inputObjectTypeExtension:
     EXTEND INPUT name directives? inputFieldsDefinition
     | EXTEND INPUT name directives
@@ -414,7 +421,7 @@ typeSystemDirectiveLocation:
     TYPE_SYSTEM_DIRECTIVE_LOCATION;
 
 // Names
-// http://spec.graphql.org/June2018/#sec-Names
+// https://spec.graphql.org/June2018/#sec-Names
 
 name:
     nameBase
@@ -426,19 +433,19 @@ name:
 
 nameBase:
     NAME
-    | FRAGMENT
     | QUERY
     | MUTATION
     | SUBSCRIPTION
+    | FRAGMENT
+    | EXTEND
     | SCHEMA
     | SCALAR
     | TYPE
-    | INTERFACE
     | IMPLEMENTS
-    | ENUM
+    | INTERFACE
     | UNION
+    | ENUM
     | INPUT
-    | EXTEND
     | DIRECTIVE
     | EXECUTABLE_DIRECTIVE_LOCATION
     | TYPE_SYSTEM_DIRECTIVE_LOCATION
@@ -453,36 +460,36 @@ FALSE:
     'false';
 NULL:
     'null';
-FRAGMENT:
-    'fragment';
+ON:
+    'on';
 QUERY:
     'query';
 MUTATION:
     'mutation';
 SUBSCRIPTION:
     'subscription';
+FRAGMENT:
+    'fragment';
+EXTEND:
+    'extend';
 SCHEMA:
     'schema';
 SCALAR:
     'scalar';
 TYPE:
     'type';
-INTERFACE:
-    'interface';
 IMPLEMENTS:
     'implements';
-ENUM:
-    'enum';
+INTERFACE:
+    'interface';
 UNION:
     'union';
+ENUM:
+    'enum';
 INPUT:
     'input';
-EXTEND:
-    'extend';
 DIRECTIVE:
     'directive';
-ON:
-    'on';
 EXECUTABLE_DIRECTIVE_LOCATION:
     'QUERY'
     | 'MUTATION'
@@ -509,7 +516,7 @@ NAME:
     [_A-Za-z] [_0-9A-Za-z]*;
 
 // Int Value
-// http://spec.graphql.org/June2018/#sec-Int-Value
+// https://spec.graphql.org/June2018/#sec-Int-Value
 
 INT_VALUE:
     INTEGER_PART;
@@ -530,7 +537,7 @@ fragment NON_ZERO_DIGIT:
     [1-9];
 
 // Float Value
-// http://spec.graphql.org/June2018/#sec-Float-Value
+// https://spec.graphql.org/June2018/#sec-Float-Value
 
 FLOAT_VALUE:
     INTEGER_PART FRACTIONAL_PART
@@ -551,7 +558,7 @@ fragment SIGN:
     [+-];
 
 // String Value
-// http://spec.graphql.org/June2018/#sec-String-Value
+// https://spec.graphql.org/June2018/#sec-String-Value
 
 STRING_VALUE:
     '"' STRING_CHARACTER* '"'
@@ -586,13 +593,13 @@ fragment BLOCK_STRING_CHARCTER:
     ;
 
 // Source Text
-// http://spec.graphql.org/June2018/#sec-Source-Text
+// https://spec.graphql.org/June2018/#sec-Source-Text
 
 fragment SOURCE_CHARACTER:
     [\u0009\u000A\u000D\u0020-\uFFFF];
 
 // Ignored Tokens
-// http://spec.graphql.org/June2018/#sec-Source-Text.Ignored-Tokens
+// https://spec.graphql.org/June2018/#sec-Source-Text.Ignored-Tokens
 
 UNICODE_BOM:
     '\uFEFF' -> skip;
