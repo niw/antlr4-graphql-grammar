@@ -24,3 +24,31 @@ tests:
       parse: true
     then:
       syntax-error: true
+
+  # This is new syntax on October 2021.
+  - name: Description for schema
+    given:
+      query: |
+        """
+        Description
+        """
+        schema {
+          query: Query
+        }
+    when:
+      parse: true
+    then:
+      passes: true
+
+  # This is new syntax on October 2021.
+  - name: Directive definition with repeatable
+    given:
+      query: |
+        """
+        Description
+        """
+        directive @cat repeatable on QUERY
+    when:
+      parse: true
+    then:
+      passes: true
