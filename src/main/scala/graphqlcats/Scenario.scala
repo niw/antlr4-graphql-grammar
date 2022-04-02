@@ -46,7 +46,7 @@ case class Background(
 
 case class Test(
   name: String,
-  given: Given,
+  `given`: Given,
   when: When,
   `then`: Seq[Then]
 )
