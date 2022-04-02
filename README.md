@@ -1,7 +1,7 @@
 ANTLR4 GraphQL Grammar
 ======================
 
-A simple [ANTLR4](https://www.antlr.org/) grammar that can parse [GraphQL language (June 2018 Edition)](https://spec.graphql.org/June2018/).
+A simple [ANTLR4](https://www.antlr.org/) grammar that can parse [GraphQL language (October 2021 Edition)](https://spec.graphql.org/October2021/).
 
 This project provides a plain grammar file, also unit tests suite for the grammar.
 
@@ -32,7 +32,7 @@ It generates Java implementation and run unit tests on it.
 Grammar implementation
 ----------------------
 
-The grammar implements GraphQL language June 2018 Edition syntax.
+The grammar implements GraphQL language October 2021 Edition syntax.
 
 It only contains lexer and parser, therefore it can be used for generating any language implementation.
 However, because of that, each application has a responsibility to materialize such as literal values from parse result.
